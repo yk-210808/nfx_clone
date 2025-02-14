@@ -1,0 +1,16 @@
+@use "../mixin/mixin"as *;
+@use "../setting/setting"as *;
+
+.c-input {
+  background-color: #ffffff34;
+  padding: 15px 10px;
+  border-radius: 2px;
+  max-width: 400px;
+  width: 100%;
+
+  &:focus {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+    box-shadow: none;
+  }
+}

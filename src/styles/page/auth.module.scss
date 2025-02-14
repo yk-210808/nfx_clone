@@ -1,0 +1,41 @@
+@use "../mixin/mixin"as *;
+@use "../setting/setting"as *;
+
+.page {
+  min-height: 100svh;
+  position: relative;
+}
+
+.box {
+  max-width: 500px;
+  height: fit-content;
+  margin: auto;
+  padding: 50px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  background-color: #ffffff1e;
+}
+
+.ttl {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.input {
+  &+.input {
+    margin-top: 20px;
+  }
+}
+
+.remember {
+  margin-top: 50px;
+}
+
+.btn {
+  margin-top: 20px;
+}
