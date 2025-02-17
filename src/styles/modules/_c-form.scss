@@ -3,14 +3,53 @@
 
 .c-input {
   background-color: #ffffff34;
-  padding: 15px 10px;
   border-radius: 2px;
   max-width: 400px;
   width: 100%;
 
-  &:focus {
-    outline: 2px solid #fff;
-    outline-offset: 4px;
+
+
+
+
+  // &:internal-autofill-selected {
+  //   background-color: $clear_black;
+  // }
+
+  input {
+    background-color: transparent;
+    padding: 15px 10px;
+    width: 100%;
+
+    &:focus {
+      box-shadow: none;
+      outline: 2px solid #fff;
+      outline-offset: 4px;
+    }
+
+    &::placeholder {
+      color: $clear_white;
+    }
+
+    &:-webkit-autofill {
+      box-shadow: 0 0 0 1000px #00000070  inset !important; // background-colorでは変わらないため、box-shadowを指定。
+      -webkit-text-fill-color: #fff !important;
+    }
+  }
+}
+
+.c-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+
+  [type="checkbox"] {
+    background-color: $clear_black;
     box-shadow: none;
+
+    &:checked {
+      outline: 2px solid #fff;
+      outline-offset: 3px;
+    }
   }
 }

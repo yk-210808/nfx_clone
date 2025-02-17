@@ -30,6 +30,10 @@
   &+.input {
     margin-top: 20px;
   }
+
+  &+.btn {
+    margin-top: 35px;
+  }
 }
 
 .remember {
@@ -38,4 +42,16 @@
 
 .btn {
   margin-top: 20px;
+}
+
+.signup {
+  display: block;
+  width: fit-content;
+  margin: 20px auto 0;
+}
+
+.error {
+  color: $primary;
+  margin: 15px 0 0;
+  font-weight: bold;
 }

@@ -241,3 +241,13 @@ button::after {
   top: 0;
   left: 0;
 }
+
+.underline {
+  text-decoration: underline;
+
+  @include pc {
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
