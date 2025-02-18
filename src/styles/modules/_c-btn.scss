@@ -14,4 +14,23 @@
       background-color: $primary_hover;
     }
   }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.c-btn02 {
+  background-color: $clear_black;
+  border: 1px solid $clear_white;
+  font-weight: 500;
+  padding: 7px 20px;
+  display: block;
+  width: fit-content;
+
+  @include pc {
+    &:hover {
+      background-color: #000;
+    }
+  }
 }

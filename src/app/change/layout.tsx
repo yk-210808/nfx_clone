@@ -1,6 +1,6 @@
 import LayoutBox from "@/components/layouts/layoutBox"
 
-export default function AuthLayout({ children }: { children: React.ReactNode }) {
+export default function ChangeLayout({ children }: { children: React.ReactNode }) {
   return (
     <LayoutBox>
       {children}

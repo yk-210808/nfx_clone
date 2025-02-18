@@ -18,6 +18,10 @@ export async function updateAuth(formData: FormData) {
     return { error: error.message }
   }
 
+  if (!data.user.new_email) {
+    return { error: "このメールアドレスは既に登録されています。" };
+  }
+
   revalidatePath('/', 'layout')
-  redirect('/account')
+  redirect('/change/confirm')
 }

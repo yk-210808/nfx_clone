@@ -31,9 +31,13 @@
     }
 
     &:-webkit-autofill {
-      box-shadow: 0 0 0 1000px #00000070  inset !important; // background-colorでは変わらないため、box-shadowを指定。
+      box-shadow: 0 0 0 1000px #00000070 inset !important; // background-colorでは変わらないため、box-shadowを指定。
       -webkit-text-fill-color: #fff !important;
     }
+  }
+
+  &.disabled {
+    opacity: 0.3;
   }
 }
 

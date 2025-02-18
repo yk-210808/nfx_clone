@@ -1,10 +1,9 @@
 'use client';
-
 import styles from "@/styles/page/auth.module.scss"
-import { signup } from "../actions";
+import { passwordResetUpdate } from "../actions";
 import { useEffect, useState } from "react";
 
-export default function SignupPage() {
+export default function PasswordResetPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
 
@@ -15,32 +14,30 @@ export default function SignupPage() {
   }, [])
 
   async function handleSubmit(formData: FormData) {
-    const result = await signup(formData)
+    const result = await passwordResetUpdate(formData)
     setLoading(false)
     if (result.error) {
-      setError(result.error);
+      setError(result.error)
     }
   }
 
   return (
     <>
-      <h1 className={styles.ttl}>新規登録</h1>
+      <h1 className={styles.ttl}>パスワードリセット</h1>
       <form action={handleSubmit} onSubmit={() => setLoading(true)}>
-        <div className={`c-input ${styles.input}`}><input id="email" type="email" name="email" placeholder="メールアドレス" required /></div>
-        <div className={`c-input ${styles.input}`}><input id="password" type="password" name="password" placeholder="パスワード" required /></div>
+        <div className={`c-input ${styles.input}`}><input type="password" name="password" placeholder="パスワード" required /></div>
         <button
           type="submit"
           className={`c-btn01 ${styles.btn}`}
           disabled={loading}
         >
-          {loading ? '登録中 ...' : '登録する'}
+          {loading ? '更新中 ...' : '更新する'}
         </button>
 
         {error && (
           <p className={styles.error}>{error}</p>
         )}
       </form>
-      <a href="/auth" className={`underline ${styles.signup}`}>ログインはこちら</a>
     </>
-  )
+  );
 }

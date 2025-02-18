@@ -34,6 +34,10 @@
   &+.btn {
     margin-top: 35px;
   }
+
+  &+.label {
+    margin-top: 15px;
+  }
 }
 
 .remember {
@@ -54,4 +58,14 @@
   color: $primary;
   margin: 15px 0 0;
   font-weight: bold;
+}
+
+.label {
+  display: block;
+  padding: 5px 0;
+}
+
+.password_reset {
+  display: inline-block;
+  margin: 10px 0;
 }

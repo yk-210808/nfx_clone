@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
   const token_hash = searchParams.get('token_hash')
   const type = searchParams.get('type') as EmailOtpType | null
-  const next = '/'
+  const next = '/change/complete'
 
   // Create redirect link without the secret token
   const redirectTo = request.nextUrl.clone()
@@ -28,8 +28,6 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(redirectTo)
     }
   }
-
-  // 確認メールが2重で飛ぶので修正
 
   // return the user to an error page with some instructions
   redirectTo.pathname = '/error'

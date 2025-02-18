@@ -1,24 +1,23 @@
 'use client'
-import { useCallback, useEffect, useState } from 'react'
-import { createClient } from '@/utils/supabase/client'
+import styles from "@/styles/page/auth.module.scss"
+import { useEffect, useState } from 'react'
 import { type User } from '@supabase/supabase-js'
 import { updateAuth } from './actions'
+import Link from "next/link"
 
 export default function AccountForm({ user }: { user: User | null }) {
-  const supabase = createClient()
   const [loading, setLoading] = useState(true)
-  const [email, setEmail] = useState<string | null>(null)
   const [error, setError] = useState("")
 
   useEffect(() => {
     if (user) {
       setLoading(false)
-      setEmail(user.email!)
     }
   }, [])
 
   async function handleUpdate(formData: FormData) {
     const result = await updateAuth(formData)
+    setLoading(false)
     if (result.error) {
       setError(result.error);
     }
@@ -26,112 +25,50 @@ export default function AccountForm({ user }: { user: User | null }) {
 
   useEffect(() => {
     console.log(error);
-    
-  },[error])
-
-  // const getProfile = useCallback(async () => {
-  //   try {
-  //     setLoading(true)
-
-  //     const { data, error } = await supabase
-  //       .auth
-  //       .getUser()
-
-  //     // if (error && status !== 406) {
-  //     if (error) {
-  //       console.log(error)
-  //       throw error
-  //     }
-
-  //     if (data) {
-
-  //       // setEmail(data.email)
-  //       // setFullname(data.full_name)
-  //       // setUsername(data.username)
-  //       // setWebsite(data.website)
-  //       // setAvatarUrl(data.avatar_url)
-  //     }
-  //   } catch (error) {
-  //     // alert('Error loading user data!')
-  //     console.log(error);
-      
-  //   } finally {
-  //     setLoading(false)
-  //   }
-  // }, [user, supabase])
-
-  // useEffect(() => {
-  //   getProfile()
-  // }, [user, getProfile])
-
-  // async function updateProfile({
-  //   username,
-  //   website,
-  //   avatar_url,
-  // }: {
-  //   username: string | null
-  //   fullname: string | null
-  //   website: string | null
-  //   avatar_url: string | null
-  // }) {
-  //   try {
-  //     setLoading(true)
-
-  //     const { error } = await supabase.from('profiles').upsert({
-  //       id: user?.id as string,
-  //       full_name: fullname,
-  //       username,
-  //       website,
-  //       avatar_url,
-  //       updated_at: new Date().toISOString(),
-  //     })
-  //     if (error) throw error
-  //     alert('Profile updated!')
-  //   } catch (error) {
-  //     alert('Error updating the data!')
-  //   } finally {
-  //     setLoading(false)
-  //   }
-  // }
-
-  
+  }, [error])
 
   return (
     <div className="form-widget">
-
-      {/* ... */}
-
-      <form action={handleUpdate}>
-        <div>
-          <label htmlFor="email">Email：</label>
+      <form action={handleUpdate} onSubmit={() => setLoading(true)}>
+        <label htmlFor="email" className={styles.label}>メールアドレス</label>
+        <div className={`c-input ${styles.input}`}>
           <input
             id="email"
-            className='c-input'
             type="email"
             name='email'
             defaultValue={user?.email}
-            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
-          <p>Password：*********</p>
+
+        <label htmlFor="password" className={styles.label}>パスワード</label>
+        <div className={`c-input disabled ${styles.input}`}>
+          <input
+            id="password"
+            type="password"
+            name="password"
+            value="********"
+            disabled
+          />
         </div>
-  
-        <div>
-          <button
-            className="c-btn01"
-            // onClick={() => updateProfile({ fullname, username, website, avatar_url })}
-            disabled={loading}
-          >
-            {loading ? 'Loading ...' : 'Update'}
-          </button>
-        </div>
+        <Link href="/auth/password_reset" className={`underline ${styles.password_reset}`}>パスワードリセットはこちら</Link>
+
+
+        {error && (
+          <p className={styles.error}>{error}</p>
+        )}
+
+        <button
+          className={`c-btn01 ${styles.btn}`}
+          disabled={loading}
+        >
+          {loading ? '保存中 ...' : '保存'}
+        </button>
       </form>
 
       <div>
         <form action="/auth/signout" method="post">
-          <button className="button block" type="submit">
-            Sign out
+          <button className="c-btn02 ml-auto mt-4" type="submit">
+            ログアウト
           </button>
         </form>
       </div>
