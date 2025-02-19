@@ -1,8 +1,8 @@
 'use client'
-import Link from "next/link"
-import { isUserLogin } from "@/utils/supabase/functions"
-import { useEffect, useState } from "react";
-import { FaRegUserCircle } from "react-icons/fa";
+// import Link from "next/link"
+// import { isUserLogin } from "@/utils/supabase/functions"
+// import { useEffect, useState } from "react";
+// import { FaRegUserCircle } from "react-icons/fa";
 
 
 export default function LayoutHeader({ children }: { children: React.ReactNode }) {

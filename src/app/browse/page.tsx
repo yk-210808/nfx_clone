@@ -1,6 +1,6 @@
 
 export default function BrowsePage() {
   return (
-    <p>'TOP'</p>
+    <p>TOP</p>
   )
 }

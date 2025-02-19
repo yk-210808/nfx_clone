@@ -10,7 +10,7 @@ export default function AccountForm({ user }: { user: User | null }) {
   const [error, setError] = useState("")
 
   useEffect(() => {
-    if (user) {
+    if (loading) {
       setLoading(false)
     }
   }, [])

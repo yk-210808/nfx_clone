@@ -1,4 +1,3 @@
-import LayoutBox from "@/components/layouts/layoutBox";
 import Link from "next/link";
 
 export default function emailConfirmationCompletePage() {
