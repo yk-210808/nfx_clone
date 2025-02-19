@@ -23,10 +23,6 @@ export default function AccountForm({ user }: { user: User | null }) {
     }
   }
 
-  useEffect(() => {
-    console.log(error);
-  }, [error])
-
   return (
     <div className="form-widget">
       <form action={handleUpdate} onSubmit={() => setLoading(true)}>
