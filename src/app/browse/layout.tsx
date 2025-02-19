@@ -15,7 +15,7 @@ export default function BrowseLayout({ children }: { children: React.ReactNode }
           <AccountIcon />
         </div>
       </LayoutHeader>
-      {children}
+      <main>{children}</main>
     </>
   )
 }
